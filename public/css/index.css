@@ -1,0 +1,1325 @@
+/* Ultra Modern Base Styles */
+@import url('https://fonts.googleapis.com/css2?family=Oxygen+Mono&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+:root {
+    --background-color: #faf9ff;
+    --primary-color: #0f0e17;
+    --accent-color: #5e4dff;
+    --accent-color2: #8174ff;
+    --input-bg: #ffffff;
+    --hover-color: rgba(94, 77, 255, 0.08);
+    --border-color: rgba(224, 221, 255, 0.6);
+    --text-shadow: 0 2px 4px rgba(15, 14, 23, 0.1);
+    --box-shadow: 0 8px 24px rgba(15, 14, 23, 0.05);
+    --box-shadow-hover: 0 16px 40px rgba(94, 77, 255, 0.2);
+    --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    --subtle-outline: rgba(129, 116, 255, 0.4);
+    --card-bg: rgba(255, 255, 255, 0.96);
+    --glass-bg: rgba(255, 255, 255, 0.25);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --gradient-accent: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color2) 100%);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    color: var(--primary-color);
+    box-sizing: border-box;
+    border: none;
+    font-size: 18px;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    outline: none;
+    list-style: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body, html {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--background-color);
+    line-height: 1.7;
+    scroll-behavior: smooth;
+    overscroll-behavior-y: none;
+}
+
+::selection {
+    background: var(--accent-color);
+    color: white;
+}
+
+.wrap {
+    width: inherit;
+    min-height: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: radial-gradient(ellipse at top, #f6f4ff 0%, var(--background-color) 100%);
+    background-attachment: fixed;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1800px;
+    padding: 0 40px;
+}
+
+.unselectable {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+header, footer, main {
+    width: 100%;
+}
+
+.textShadow {
+    text-shadow: var(--text-shadow);
+}
+
+header {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+main {
+    flex: 1 1 auto;
+    padding: 3rem 0;
+}
+
+.headerLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 2px;
+}
+
+.headerLink li {
+    padding: 12px 24px;
+    border-radius: 12px;
+    transition: var(--transition);
+    position: relative;
+    font-weight: 500;
+}
+
+.headerLink li::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: var(--gradient-accent);
+    border-radius: 3px;
+    transition: var(--transition);
+}
+
+.headerLink li:hover {
+    color: var(--accent-color);
+}
+
+.headerLink li:hover::after {
+    width: 60%;
+}
+
+.btn {
+    background: var(--gradient-accent);
+    color: white;
+    border-radius: 12px;
+    padding: 14px 28px;
+    font-weight: 600;
+    transition: var(--transition);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(94, 77, 255, 0.25);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0.2), transparent);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.btn:hover::before {
+    opacity: 1;
+}
+
+.btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 8px rgba(94, 77, 255, 0.3);
+}
+
+.hr-divider {
+    margin: 40px 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-color), transparent);
+    border: 0;
+    position: relative;
+}
+
+.hr-divider::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 1px;
+    background: var(--gradient-accent);
+}
+
+.gradient-text {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+.logo {
+    font-size: 2.2rem;
+    padding: 8px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -1px;
+}
+
+.logo:hover {
+    transform: scale(1.05) rotate(-2deg);
+}
+
+.logo::after, .logo::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-accent);
+    transform: translateY(-50%);
+    transition: var(--transition);
+    border-radius: 3px;
+}
+
+.logo::after {
+    left: -65px;
+    background: linear-gradient(to left, var(--accent-color), transparent);
+}
+
+.logo::before {
+    right: -65px;
+    background: linear-gradient(to right, var(--accent-color), transparent);
+}
+
+.headerInner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    flex-wrap: wrap;
+}
+
+.mainTitle {
+    font-size: 4.5rem;
+    text-align: center;
+    margin: 3rem 0 4rem;
+    position: relative;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1.5px;
+}
+
+.mainTitle::after {
+    content: '';
+    display: block;
+    width: 120px;
+    height: 6px;
+    background: var(--gradient-accent);
+    margin: 2rem auto 0;
+    border-radius: 3px;
+    box-shadow: 0 4px 12px rgba(94, 77, 255, 0.3);
+}
+
+.cardSectionGrid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 30px 0;
+}
+
+.card {
+    width: 100%;
+    background: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    position: relative;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-accent);
+    opacity: 0;
+    transition: var(--transition);
+    z-index: -1;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--box-shadow-hover);
+    border-color: var(--accent-color2);
+    color: white;
+}
+
+.card:hover::before {
+    opacity: 0.1;
+}
+
+.card:hover .cardTitle {
+    background: linear-gradient(135deg, white 0%, #e0ddff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.cardInner {
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.cardTitle {
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #3a3a5e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: var(--transition);
+}
+
+.cardDesc {
+    color: #5a5a7a;
+    line-height: 1.8;
+    font-weight: 400;
+}
+
+.timerWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4rem 0;
+    position: relative;
+}
+
+.timerWrap::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(94, 77, 255, 0.1) 0%, transparent 70%);
+    z-index: -1;
+}
+
+.circle {
+    position: relative;
+    width: 450px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(0 20px 30px rgba(94, 77, 255, 0.2));
+}
+
+.circle svg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: rotate(270deg);
+}
+
+.circle svg circle {
+    width: 100%;
+    height: 100%;
+    fill: transparent;
+    stroke: #f5f3ff;
+    stroke-width: 12px;
+    stroke-linecap: round;
+}
+
+.circle svg circle:nth-child(2) {
+    stroke: url(#gradient);
+    stroke-dasharray: 1256;
+    stroke-dashoffset: calc(1256 - (1256 * var(--progress)) / 100);
+    stroke-width: 14px;
+    filter: drop-shadow(0 0 10px rgba(94, 77, 255, 0.4));
+}
+
+.time {
+    position: absolute;
+    font-size: 4.5rem;
+    font-family: 'Oxygen Mono', monospace;
+    font-weight: 500;
+    color: var(--primary-color);
+    text-shadow: 0 4px 10px rgba(15, 14, 23, 0.1);
+}
+
+.navStopwatch {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3rem;
+    gap: 20px;
+}
+
+.navStopwatch button {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    transition: var(--transition);
+    font-weight: 600;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    max-width: 180px;
+}
+
+.navStopwatch button:hover {
+    background: var(--hover-color);
+    color: var(--accent-color);
+    border-color: var(--accent-color2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(94, 77, 255, 0.15);
+}
+
+.navStopwatch button:active {
+    transform: translateY(0);
+}
+
+.auth-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    padding: 16px 32px;
+    border-radius: 12px;
+    transition: var(--transition);
+    font-weight: 600;
+    min-width: 200px;
+}
+
+.wrapOfAccBtn {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.formWrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 0;
+}
+
+.form {
+    width: 100%;
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    border-radius: 24px;
+    background: var(--card-bg);
+    box-shadow: var(--box-shadow);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.form::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(129, 116, 255, 0.05) 0%, transparent 70%);
+    z-index: -1;
+}
+
+.form > .btn {
+    margin: 2rem 0 0;
+    align-self: center;
+    width: 100%;
+    padding: 18px;
+    font-size: 1rem;
+}
+
+.accFormLabel {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    color: #5a5a7a;
+    position: relative;
+    width: 100%;
+}
+
+.accFormLabel > input {
+    width: 100%;
+    margin-top: 0.8rem;
+    height: 60px;
+    background-color: var(--input-bg) !important;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 0 20px;
+    transition: var(--transition);
+    font-size: 1rem;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.03);
+    font-weight: 500;
+}
+
+.accFormLabel > input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 4px rgba(94, 77, 255, 0.15);
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 1.5rem 0;
+}
+
+.checkbox input {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--accent-color);
+    cursor: pointer;
+}
+
+.errorMsg {
+    font-size: 0.9rem;
+    margin-top: 0.8rem;
+    color: #ff4757;
+    animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+    font-weight: 500;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+    20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+.resultTable {
+    width: 90%;
+    border-spacing: 0;
+    margin: 4rem auto;
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+}
+
+.resultTable th {
+    background: var(--gradient-accent);
+    color: white;
+    font-weight: 600;
+    padding: 1.5rem;
+    text-align: left;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.resultTable td {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.resultTable tr:last-child td {
+    border-bottom: none;
+}
+
+.resultTable tr:hover td {
+    background-color: var(--hover-color);
+    transform: translateX(4px);
+}
+
+/* SVG Gradient for Circle */
+.svg-gradients {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1200px) {
+    .mainTitle {
+        font-size: 3.5rem;
+    }
+
+    .circle {
+        width: 380px;
+        height: 380px;
+    }
+
+    .time {
+        font-size: 3.5rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .container {
+        padding: 0 30px;
+    }
+
+    .cardSectionGrid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .mainTitle {
+        font-size: 3rem;
+    }
+
+    .logo {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .mainTitle {
+        font-size: 2.5rem;
+        margin: 2rem 0 3rem;
+    }
+
+    .circle {
+        width: 320px;
+        height: 320px;
+    }
+
+    .time {
+        font-size: 3rem;
+    }
+
+    .navStopwatch {
+        flex-wrap: wrap;
+        max-width: 400px;
+    }
+
+    .navStopwatch button {
+        max-width: 120px;
+        padding: 0.8rem 1rem;
+    }
+
+    .form {
+        padding: 2rem;
+    }
+
+    .headerLink li {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    .mainTitle {
+        font-size: 2rem;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+    }
+
+    .logo::after, .logo::before {
+        width: 30px;
+    }
+
+    .logo::after {
+        left: -35px;
+    }
+
+    .logo::before {
+        right: -35px;
+    }
+
+    .circle {
+        width: 280px;
+        height: 280px;
+    }
+
+    .time {
+        font-size: 2.5rem;
+    }
+
+    .wrapOfAccBtn {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .auth-btn {
+        width: 100%;
+    }
+}
+
+/* Micro-interactions */
+@media (hover: hover) {
+    .btn:hover {
+        transform: translateY(-3px);
+    }
+
+    .card:hover {
+        transform: translateY(-8px);
+    }
+
+    .navStopwatch button:hover {
+        transform: translateY(-2px);
+    }
+}
+
+/* Dark mode preference */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #0f0e17;
+        --primary-color: #fffffe;
+        --accent-color: #8174ff;
+        --accent-color2: #a599ff;
+        --input-bg: #1a1a2e;
+        --hover-color: rgba(129, 116, 255, 0.1);
+        --border-color: rgba(42, 41, 64, 0.6);
+        --text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        --box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        --box-shadow-hover: 0 16px 40px rgba(129, 116, 255, 0.3);
+        --card-bg: rgba(26, 26, 46, 0.8);
+        --glass-bg: rgba(26, 26, 46, 0.5);
+        --glass-border: rgba(64, 61, 92, 0.4);
+    }
+
+    .cardDesc {
+        color: #b8b8d2;
+    }
+
+    .circle svg circle {
+        stroke: #1f1b3d;
+    }
+
+    .accFormLabel > input {
+        color: white;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px var(--input-bg) inset !important;
+        -webkit-text-fill-color: white
+    }
+
+    .rememberWrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+    .rememberLabel {
+        margin: 0;
+        cursor: pointer;
+    }
+
+    .rememberWrap input[type="checkbox"] {
+        margin: 0;
+    }
+}
+
+/* Для всех страниц логина */
+    body.no-scroll {
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .login-container {
+        max-height: 100vh;
+        overflow: hidden;
+    }
+
+    /* Сдвигаем форму логина выше */
+.login-page body {
+    overflow: hidden !important;
+    height: 100vh !important;
+    width: 100vw !important;
+}
+
+.login-page .wrap {
+    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.login-page main {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100vh;
+    display: flex;
+    align-items: flex-start !important; /* Сдвигаем к верху */
+    justify-content: flex-start !important; /* Сдвигаем к верху */
+    padding-top: 5vh !important; /* Добавляем небольшой отступ сверху */
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 5vh !important; /* Сдвигаем контейнер выше */
+}
+
+.login-page .mainTitle {
+    font-size: 1.8rem !important;
+    margin: 0 0 1rem 0 !important; /* Уменьшаем отступ снизу */
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.2;
+    padding-top: 0 !important;
+}
+
+.login-page .mainTitle::after {
+    width: 60px !important;
+    height: 3px !important;
+    margin: 0.5rem auto 0 !important; /* Уменьшаем отступ */
+}
+
+.login-page .formWrap {
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+}
+
+.login-page .form {
+    max-width: 100% !important;
+    padding: 1.2rem !important; /* Уменьшаем padding */
+    margin: 0 !important;
+    border-radius: 16px;
+    margin-top: 0 !important;
+}
+
+.login-page .accFormLabel {
+    margin-bottom: 0.8rem !important; /* Уменьшаем отступы между полями */
+    font-size: 0.9rem !important;
+}
+
+.login-page .accFormLabel > input {
+    height: 42px !important; /* Уменьшаем высоту инпутов */
+    margin-top: 0.3rem !important;
+    font-size: 0.9rem !important;
+    border-radius: 10px !important;
+}
+
+.login-page .rememberWrap {
+    margin: 0.6rem 0 !important; /* Уменьшаем отступ чекбокса */
+}
+
+.login-page .rememberLabel {
+    font-size: 0.85rem !important;
+}
+
+.login-page .form > .btn {
+    margin: 0.8rem 0 0 !important; /* Уменьшаем отступ кнопки */
+    padding: 10px !important; /* Уменьшаем padding кнопки */
+    font-size: 0.9rem !important;
+    border-radius: 10px !important;
+}
+
+.login-page .errorMsg {
+    font-size: 0.8rem !important;
+    margin-top: 0.2rem !important; /* Уменьшаем отступ ошибок */
+}
+
+/* Еще больше сдвигаем для маленьких экранов */
+@media (max-height: 700px) {
+    .login-page main {
+        padding-top: 2vh !important;
+    }
+    
+    .login-container {
+        margin-top: 2vh !important;
+    }
+    
+    .login-page .form {
+        padding: 1rem !important;
+    }
+    
+    .login-page .mainTitle {
+        font-size: 1.6rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+}
+
+@media (max-height: 600px) {
+    .login-page main {
+        padding-top: 1vh !important;
+    }
+    
+    .login-container {
+        margin-top: 1vh !important;
+    }
+    
+    .login-page .form {
+        padding: 0.8rem !important;
+        transform: scale(0.95);
+    }
+    
+    .login-page .mainTitle {
+        font-size: 1.4rem !important;
+        margin-bottom: 0.6rem !important;
+    }
+    
+    .login-page .accFormLabel > input {
+        height: 38px !important;
+    }
+}
+
+/* Уменьшаем хедер для экономии места */
+.login-page header {
+    min-height: 40px !important;
+    padding: 0 !important;
+}
+
+.login-page .headerInner {
+    padding: 5px 0 !important;
+}
+
+.login-page .logo {
+    font-size: 1.4rem !important;
+    padding: 2px !important;
+    transform: scale(0.9);
+}
+
+.login-page .headerLink li {
+    padding: 4px 10px !important;
+    font-size: 0.8rem !important;
+}
+
+/* Сдвигаем форму логина выше (сбалансированный размер) */
+.login-page body {
+    overflow: hidden !important;
+    height: 100vh !important;
+    width: 100vw !important;
+}
+
+.login-page .wrap {
+    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.login-page main {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100vh;
+    display: flex;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    padding-top: 8vh !important; /* Увеличили отступ сверху */
+}
+
+.login-container {
+    width: 100%;
+    max-width: 420px; /* Немного увеличили ширину */
+    padding: 25px;
+    margin: 0 auto;
+    margin-top: 5vh !important;
+}
+
+.login-page .mainTitle {
+    font-size: 2.2rem !important; /* Увеличили размер заголовка */
+    margin: 0 0 1.5rem 0 !important;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.2;
+    padding-top: 0 !important;
+}
+
+.login-page .mainTitle::after {
+    width: 80px !important;
+    height: 4px !important;
+    margin: 0.8rem auto 0 !important;
+}
+
+.login-page .formWrap {
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+}
+
+.login-page .form {
+    max-width: 100% !important;
+    padding: 2rem !important; /* Увеличили padding формы */
+    margin: 0 !important;
+    border-radius: 18px;
+    margin-top: 0 !important;
+}
+
+.login-page .accFormLabel {
+    margin-bottom: 1.2rem !important; /* Увеличили отступы между полями */
+    font-size: 1rem !important; /* Нормальный размер шрифта */
+}
+
+.login-page .accFormLabel > input {
+    height: 50px !important; /* Нормальная высота инпутов */
+    margin-top: 0.5rem !important;
+    font-size: 1rem !important;
+    border-radius: 12px !important;
+}
+
+.login-page .rememberWrap {
+    margin: 1rem 0 !important; /* Нормальный отступ чекбокса */
+}
+
+.login-page .rememberLabel {
+    font-size: 0.95rem !important; /* Чуть уменьшили, но читаемо */
+}
+
+.login-page .form > .btn {
+    margin: 1.2rem 0 0 !important;
+    padding: 14px !important; /* Нормальный padding кнопки */
+    font-size: 1rem !important;
+    border-radius: 12px !important;
+}
+
+.login-page .errorMsg {
+    font-size: 0.9rem !important;
+    margin-top: 0.4rem !important;
+}
+
+/* Адаптивность с более щадящими изменениями */
+@media (max-height: 700px) {
+    .login-page main {
+        padding-top: 5vh !important;
+    }
+    
+    .login-container {
+        margin-top: 3vh !important;
+    }
+    
+    .login-page .form {
+        padding: 1.5rem !important;
+    }
+    
+    .login-page .mainTitle {
+        font-size: 2rem !important;
+        margin-bottom: 1.2rem !important;
+    }
+}
+
+@media (max-height: 600px) {
+    .login-page main {
+        padding-top: 3vh !important;
+    }
+    
+    .login-container {
+        margin-top: 2vh !important;
+    }
+    
+    .login-page .form {
+        padding: 1.2rem !important;
+    }
+    
+    .login-page .mainTitle {
+        font-size: 1.8rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .login-page .accFormLabel > input {
+        height: 46px !important;
+    }
+}
+
+/* Хедер нормального размера */
+.login-page header {
+    min-height: 50px !important;
+    padding: 0 !important;
+}
+
+.login-page .headerInner {
+    padding: 8px 0 !important;
+}
+
+.login-page .logo {
+    font-size: 1.8rem !important; /* Нормальный размер лого */
+    padding: 4px !important;
+}
+
+.login-page .headerLink li {
+    padding: 8px 16px !important;
+    font-size: 0.9rem !important;
+}
+
+/* Для мобильных устройств */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 20px;
+        max-width: 380px;
+    }
+    
+    .login-page .form {
+        padding: 1.5rem !important;
+    }
+    
+    .login-page .mainTitle {
+        font-size: 2rem !important;
+    }
+}
+
+/* Стили для страницы регистрации */
+.register-page body {
+    overflow: hidden !important;
+    height: 100vh !important;
+    width: 100vw !important;
+}
+
+.register-page .wrap {
+    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.register-page main {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100vh;
+    display: flex;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    padding-top: 2vh !important; /* Минимальный отступ сверху */
+}
+
+.register-container {
+    width: 100%;
+    max-width: 450px; /* Чуть шире для большего количества полей */
+    padding: 15px;
+    margin: 0 auto;
+    margin-top: 2vh !important;
+}
+
+.register-page .mainTitle {
+    font-size: 2rem !important;
+    margin: 0 0 1rem 0 !important;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.2;
+    padding-top: 0 !important;
+}
+
+.register-page .mainTitle::after {
+    width: 80px !important;
+    height: 4px !important;
+    margin: 0.5rem auto 0 !important;
+}
+
+.register-page .formWrap {
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+    max-height: 85vh;
+    overflow-y: auto; /* Добавляем скролл только для формы если нужно */
+}
+
+.register-page .form {
+    max-width: 100% !important;
+    padding: 1.5rem !important;
+    margin: 0 !important;
+    border-radius: 16px;
+    margin-top: 0 !important;
+}
+
+.register-page .accFormLabel {
+    margin-bottom: 0.8rem !important; /* Уменьшаем отступы между полями */
+    font-size: 0.95rem !important;
+}
+
+.register-page .accFormLabel > input {
+    height: 46px !important; /* Чуть меньше высота инпутов */
+    margin-top: 0.4rem !important;
+    font-size: 0.95rem !important;
+    border-radius: 10px !important;
+}
+
+.register-page .form > .btn {
+    margin: 1rem 0 0 !important;
+    padding: 12px !important;
+    font-size: 0.95rem !important;
+    border-radius: 10px !important;
+}
+
+.register-page .errorMsg {
+    font-size: 0.85rem !important;
+    margin-top: 0.3rem !important;
+}
+
+/* Уменьшаем хедер для экономии места */
+.register-page header {
+    min-height: 45px !important;
+    padding: 0 !important;
+}
+
+.register-page .headerInner {
+    padding: 6px 0 !important;
+}
+
+.register-page .logo {
+    font-size: 1.6rem !important;
+    padding: 3px !important;
+    transform: scale(0.9);
+}
+
+.register-page .headerLink li {
+    padding: 5px 12px !important;
+    font-size: 0.85rem !important;
+}
+
+/* Адаптивность для очень маленьких экранов */
+@media (max-height: 800px) {
+    .register-page main {
+        padding-top: 1vh !important;
+    }
+    
+    .register-container {
+        margin-top: 1vh !important;
+    }
+    
+    .register-page .form {
+        padding: 1.2rem !important;
+    }
+    
+    .register-page .mainTitle {
+        font-size: 1.8rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .register-page .accFormLabel {
+        margin-bottom: 0.7rem !important;
+    }
+    
+    .register-page .accFormLabel > input {
+        height: 44px !important;
+    }
+}
+
+@media (max-height: 700px) {
+    .register-page .form {
+        padding: 1rem !important;
+    }
+    
+    .register-page .mainTitle {
+        font-size: 1.6rem !important;
+        margin-bottom: 0.6rem !important;
+    }
+    
+    .register-page .accFormLabel {
+        margin-bottom: 0.6rem !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .register-page .accFormLabel > input {
+        height: 42px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .register-page .form > .btn {
+        margin: 0.8rem 0 0 !important;
+        padding: 10px !important;
+    }
+}
+
+@media (max-height: 600px) {
+    .register-page .formWrap {
+        max-height: 80vh;
+    }
+    
+    .register-page .form {
+        padding: 0.8rem !important;
+        transform: scale(0.95);
+    }
+    
+    .register-page .mainTitle {
+        font-size: 1.4rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .register-container {
+        padding: 10px;
+        max-width: 400px;
+    }
+    
+    .register-page .form {
+        padding: 1rem !important;
+    }
+}
+
+.register-page {
+    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
