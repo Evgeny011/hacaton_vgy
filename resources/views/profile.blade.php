@@ -11,12 +11,6 @@
         <div class="profile-info">
             <h1 class="profile-name">{{ Auth::user()->name }}</h1>
             <p class="profile-email">{{ Auth::user()->email }}</p>
-            <p class="profile-role">
-                @if(Auth::user()->isAdmin())
-                    <span class="role-badge admin">Администратор</span>
-                @else
-                    <span class="role-badge user">Пользователь</span>
-                @endif
             </p>
         </div>
     </div>
@@ -72,12 +66,6 @@
                 <div class="info-item">
                     <label>Дата регистрации:</label>
                     <span>{{ Auth::user()->created_at->format('d.m.Y') }}</span>
-                </div>
-                <div class="info-item">
-                    <label>Статус:</label>
-                    <span class="status-badge {{ Auth::user()->isAdmin() ? 'admin' : 'user' }}">
-                        {{ Auth::user()->isAdmin() ? 'Администратор' : 'Пользователь' }}
-                    </span>
                 </div>
             </div>
         </div>

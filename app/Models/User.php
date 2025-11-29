@@ -16,7 +16,10 @@ class User extends Authenticatable
         'email',
         'phone',
         'password',
-        'role', 
+        'role',
+        'is_blocked',
+        'blocked_at',
+        'last_login_at',
     ];
 
     protected $hidden = [
@@ -29,6 +32,9 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_blocked' => 'boolean',
+            'blocked_at' => 'datetime',
+            'last_login_at' => 'datetime',
         ];
     }
 
@@ -37,8 +43,28 @@ class User extends Authenticatable
         return $this->role === 'admin';
     }
 
+    public function isBlocked()
+    {
+        return $this->is_blocked;
+    }
+
     public function documents()
     {
         return $this->hasMany(Document::class);
+    }
+
+    public function scopeBlocked($query)
+    {
+        return $query->where('is_blocked', true);
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('is_blocked', false);
+    }
+
+    public function scopeUnverified($query)
+    {
+        return $query->whereNull('email_verified_at');
     }
 }

@@ -18,7 +18,6 @@ class Counterparty extends Model
         'address',
     ];
 
-    // Отношения
     public function documents()
     {
         return $this->hasMany(Document::class);
